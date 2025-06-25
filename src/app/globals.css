@@ -19,3 +19,9 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Ensure header nav links never have an underline and are always white */
+header a {
+  text-decoration: none !important;
+  color: #fff !important;
+}
