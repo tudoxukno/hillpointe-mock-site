@@ -1,51 +1,29 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 const HERO_TEXT = `$750M IN\nWORKFORCE\nHOUSING`;
 
-function getLines(text: string) {
-  return text.split("\n");
-}
-
 export default function HeroSection() {
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let i = 0;
-    let animation: NodeJS.Timeout;
-    function type() {
-      i++;
-      setDisplayed(HERO_TEXT.slice(0, i));
-      if (i < HERO_TEXT.length) {
-        animation = setTimeout(type, 18);
-      } else {
-        setDone(true);
-      }
-    }
-    type();
-    return () => clearTimeout(animation);
-  }, []);
-
-  // Reserve space for the full text to prevent layout shift
-  const lines = getLines(HERO_TEXT);
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-start bg-gradient-to-b from-[#0F0903] to-[#1179EC] overflow-hidden">
       {/* Content: Text & Tabs */}
       <div className="relative z-10 flex flex-col h-full w-full max-w-[1920px] mx-auto px-[72px] pt-0">
         <div className="flex flex-row justify-between">
           {/* Left: Text */}
-          <div className="flex flex-col justify-center max-w-[700px] pt-[40px]">
+          <motion.div
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
+            className="flex flex-col justify-center max-w-[700px] pt-[40px]"
+          >
             <h1 className="text-white text-[132px] font-medium leading-[1.05] mb-[12px] whitespace-pre-line" style={{fontFamily: 'Inter, sans-serif'}}>
-              {displayed}
-              <span className="inline-block w-4 animate-pulse align-middle" style={{opacity: done ? 0 : 1}}>|</span>
+              {HERO_TEXT}
             </h1>
             <p className="text-[#D5D5D5] text-[28px] font-normal mb-[20px] max-w-[600px]">
               Building modern housing for America&apos;s workforce across the Southeast.
             </p>
-          </div>
+          </motion.div>
           {/* Spacer for image on large screens */}
           <div className="hidden lg:block w-[900px]" />
         </div>
@@ -68,14 +46,29 @@ export default function HeroSection() {
           </div>
           {/* Down Arrow only */}
           <div className="flex flex-col items-end justify-end h-full">
-            <svg width="64" height="64" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 10V30M20 30L10 20M20 30L30 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+              className="cursor-pointer"
+              onClick={() => {
+                const about = document.getElementById('about');
+                if (about) about.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <svg width="64" height="64" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 10V30M20 30L10 20M20 30L30 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.div>
           </div>
         </div>
       </div>
       {/* Hero Image: Large, lower, and off-screen to the right on large screens; normal on mobile/tablet */}
-      <div className="absolute lg:static bottom-[-60px] right-[-550px] lg:right-0 w-full flex justify-end z-0 pointer-events-none">
+      <motion.div
+        initial={{ x: 200, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        className="absolute lg:static bottom-[-60px] right-[-550px] lg:right-0 w-full flex justify-end z-0 pointer-events-none"
+      >
         <Image
           src="/images/transparent-image1.png"
           alt="3D Apartment Complex"
@@ -85,7 +78,7 @@ export default function HeroSection() {
           priority
           style={{ maxWidth: 'none', height: 'auto' }}
         />
-      </div>
+      </motion.div>
     </section>
   );
 } 
