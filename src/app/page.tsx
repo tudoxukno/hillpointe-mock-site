@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full bg-gradient-to-b from-[#0F0903] to-[#1179EC] flex flex-col" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Header/Nav */}
-      <header className="grid grid-cols-3 px-[72px] pt-[48px] w-full h-[56px] items-center max-w-[1440px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+      <header className="grid grid-cols-3 px-[72px] pt-[48px] w-full h-[56px] items-center" style={{ fontFamily: 'Inter, sans-serif' }}>
         {/* Logo left */}
         <div className="flex items-center h-full">
           <span className="text-white text-[34px] font-medium leading-none">Hillpointe</span>
