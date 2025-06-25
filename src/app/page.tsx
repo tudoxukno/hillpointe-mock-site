@@ -60,7 +60,7 @@ export default function Home() {
         </div>
       </section>
       {/* Tabs and CTA Row */}
-      <section className="flex items-center justify-between px-[72px] w-full max-w-[1920px] mx-auto">
+      <section className="flex flex-row items-center justify-between px-[72px] w-full max-w-[1920px] mx-auto">
         {/* Tabs */}
         <div className="flex -mt-[128px]">
           <div className="flex flex-col items-start mr-[64px]">
@@ -76,9 +76,8 @@ export default function Home() {
             <motion.div layout className="h-[4px] rounded-full w-[520px] bg-gradient-to-r from-[#f97316] to-[#fbbf24]" />
           </div>
         </div>
-        {/* CTA */}
-        <div className="flex flex-col items-end">
-          {/* Down Arrow only */}
+        {/* Down Arrow right-aligned, moved up with same margin */}
+        <div className="flex flex-col items-end -mt-[128px]">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 10V30M20 30L10 20M20 30L30 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
