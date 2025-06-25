@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <section className="w-full bg-white">
-      <div className="flex w-full max-w-[1920px] mx-auto min-h-[900px]" style={{minHeight: '800px'}}>
+    <section className="w-full bg-white" style={{ background: 'white' }}>
+      <div className="flex w-full max-w-[1920px] mx-auto min-h-[900px]" style={{minHeight: '800px', background: 'white'}}>
         {/* Left Column */}
         <div className="flex flex-col justify-center w-1/2 pl-[72px] pr-12 py-20 bg-white z-10">
           <span className="block text-black text-base font-bold tracking-wide uppercase mb-6">/ WHO WE ARE</span>
