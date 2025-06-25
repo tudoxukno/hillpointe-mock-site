@@ -33,41 +33,26 @@ export default function HeroSection() {
           <div className="flex flex-row gap-[64px]">
             <div className="flex flex-col items-start group cursor-pointer">
               <span className="text-white text-[28px] font-medium mb-[8px]">Team</span>
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <div className="h-[4px] rounded-full w-[120px] bg-[#f97316]" />
                 {/* Shimmer effect */}
-                <motion.div
-                  className="absolute top-0 left-0 w-1/3 h-[4px] bg-gradient-to-r from-transparent via-white to-transparent rounded-full"
-                  initial={{ x: "-100%", opacity: 0 }}
-                  whileHover={{ x: "200%", opacity: 1 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
+                <div className="absolute top-0 left-0 w-[60px] h-[4px] bg-gradient-to-r from-transparent via-yellow-300 to-transparent rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-shimmer" />
               </div>
             </div>
             <div className="flex flex-col items-start group cursor-pointer">
               <span className="text-white text-[28px] font-medium mb-[8px]">Portfolio</span>
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <div className="h-[4px] rounded-full w-[180px] bg-[#f97316]" />
                 {/* Shimmer effect */}
-                <motion.div
-                  className="absolute top-0 left-0 w-1/3 h-[4px] bg-gradient-to-r from-transparent via-white to-transparent rounded-full"
-                  initial={{ x: "-100%", opacity: 0 }}
-                  whileHover={{ x: "200%", opacity: 1 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
+                <div className="absolute top-0 left-0 w-[90px] h-[4px] bg-gradient-to-r from-transparent via-yellow-300 to-transparent rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-shimmer" />
               </div>
             </div>
             <div className="flex flex-col items-start group cursor-pointer">
               <span className="text-white text-[28px] font-medium mb-[8px]">Map</span>
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <div className="h-[4px] rounded-full w-[400px] bg-gradient-to-r from-[#f97316] to-[#fbbf24]" />
                 {/* Shimmer effect */}
-                <motion.div
-                  className="absolute top-0 left-0 w-1/3 h-[4px] bg-gradient-to-r from-transparent via-white to-transparent rounded-full"
-                  initial={{ x: "-100%", opacity: 0 }}
-                  whileHover={{ x: "200%", opacity: 1 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
+                <div className="absolute top-0 left-0 w-[200px] h-[4px] bg-gradient-to-r from-transparent via-yellow-300 to-transparent rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-shimmer" />
               </div>
             </div>
           </div>
