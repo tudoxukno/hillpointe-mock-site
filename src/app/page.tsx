@@ -1,10 +1,8 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import clsx from "clsx";
 
 const navLinks = ["About", "Our Model", "Properties", "Investors", "Contact"];
-const tabs = ["Team", "Portfolio", "Map"];
 
 export default function Home() {
   return (
@@ -43,7 +41,7 @@ export default function Home() {
             {`$750M IN\nWORKFORCE\nHOUSING`}
           </h1>
           <p className="text-[#D5D5D5] text-[28px] font-normal mb-[56px] max-w-[600px]">
-            Building modern housing for America's workforce across the Southeast.
+            Building modern housing for America&apos;s workforce across the Southeast.
           </p>
         </div>
         {/* Right: Image */}
@@ -62,7 +60,7 @@ export default function Home() {
       {/* Tabs and CTA Row */}
       <section className="flex flex-row items-center justify-between px-[72px] w-full max-w-[1920px] mx-auto">
         {/* Tabs */}
-        <div className="flex -mt-[128px]">
+        <div className="flex -mt-[192px]">
           <div className="flex flex-col items-start mr-[64px]">
             <span className="text-white text-[28px] font-medium mb-[8px]">Team</span>
             <motion.div layout className="h-[4px] rounded-full w-[120px] bg-[#f97316]" />
@@ -77,7 +75,7 @@ export default function Home() {
           </div>
         </div>
         {/* Down Arrow right-aligned, moved up with same margin */}
-        <div className="flex flex-col items-end -mt-[128px]">
+        <div className="flex flex-col items-end -mt-[192px]">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 10V30M20 30L10 20M20 30L30 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
