@@ -1,103 +1,89 @@
+"use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import clsx from "clsx";
+
+const navLinks = ["About", "Our Model", "Properties", "Investors", "Contact"];
+const tabs = ["Team", "Portfolio", "Map"];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen w-full bg-gradient-to-b from-[#0F0903] to-[#1179EC] flex flex-col" style={{ fontFamily: 'Inter, sans-serif' }}>
+      {/* Header/Nav */}
+      <header className="grid grid-cols-3 px-[72px] pt-[48px] w-full h-[56px] items-center max-w-[1440px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+        {/* Logo left */}
+        <div className="flex items-center h-full">
+          <span className="text-white text-[34px] font-medium leading-none">Hillpointe</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        {/* Nav centered */}
+        <nav className="flex flex-row items-center justify-center gap-[40px] h-full whitespace-nowrap min-w-0">
+          {navLinks.map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="text-white !text-white text-[17px] font-medium hover:text-[#f97316] transition-colors no-underline flex items-center h-full whitespace-nowrap min-w-0"
+              style={{ fontFamily: 'Inter, sans-serif', textDecoration: 'none', color: '#fff' }}
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+        {/* CTA right */}
+        <div className="flex items-center justify-end h-full">
+          <button className="text-white text-[17px] font-medium border border-white rounded-full px-[32px] py-[10px] hover:bg-white/10 transition-colors bg-transparent">
+            Learn More
+          </button>
+        </div>
+      </header>
+      {/* Hero Content */}
+      <section className="flex flex-row items-center justify-between px-[72px] pt-[32px] w-full flex-1 max-w-[1920px] mx-auto">
+        {/* Left: Text */}
+        <div className="flex flex-col justify-center max-w-[700px]">
+          <h1 className="text-white text-[100px] font-medium leading-[1.05] mb-[32px] whitespace-pre-line">
+            {`$750M IN\nWORKFORCE\nHOUSING`}
+          </h1>
+          <p className="text-[#D5D5D5] text-[28px] font-normal mb-[56px] max-w-[600px]">
+            Building modern housing for America's workforce across the Southeast.
+          </p>
+        </div>
+        {/* Right: Image */}
+        <div className="relative flex-1 flex justify-end items-center min-w-[500px] max-w-[700px]">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/images/transparent-image1.png"
+            alt="3D Apartment Complex"
+            width={600}
+            height={340}
+            className="object-contain drop-shadow-2xl select-none pointer-events-none"
+            priority
+            style={{ maxWidth: '100%', height: 'auto' }}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </section>
+      {/* Tabs and CTA Row */}
+      <section className="flex items-center justify-between px-[72px] w-full max-w-[1920px] mx-auto">
+        {/* Tabs */}
+        <div className="flex -mt-[128px]">
+          <div className="flex flex-col items-start mr-[64px]">
+            <span className="text-white text-[28px] font-medium mb-[8px]">Team</span>
+            <motion.div layout className="h-[4px] rounded-full w-[120px] bg-[#f97316]" />
+          </div>
+          <div className="flex flex-col items-start mr-[64px]">
+            <span className="text-white text-[28px] font-medium mb-[8px]">Portfolio</span>
+            <motion.div layout className="h-[4px] rounded-full w-[180px] bg-[#f97316]" />
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="text-white text-[28px] font-medium mb-[8px]">Map</span>
+            <motion.div layout className="h-[4px] rounded-full w-[520px] bg-gradient-to-r from-[#f97316] to-[#fbbf24]" />
+          </div>
+        </div>
+        {/* CTA */}
+        <div className="flex flex-col items-end">
+          {/* Down Arrow only */}
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 10V30M20 30L10 20M20 30L30 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </section>
+    </main>
   );
 }
