@@ -16,6 +16,8 @@ export default function AboutSection() {
           <p style={{ color: '#222', fontSize: '20px', wordBreak: 'break-word', maxWidth: '40rem', marginBottom: '1rem', lineHeight: 1.6 }}>
             Hillpointe's principals have decades of collective experience in developing, constructing, financing, and managing multifamily assets. The firm's fully integrated approach and ability to deliver real estate assets at a highly attractive cost basis provide a unique competitive advantage versus other real estate investments.
           </p>
+          <div style={{ height: '120px' }} />
+          <span className="block font-bold uppercase mb-6" style={{ color: '#000', fontWeight: 700, fontSize: '28px' }}>/ OUR PHILOSOPHY</span>
         </div>
         {/* Right Column: Image fills right half, edge-to-edge, top-to-bottom */}
         <div className="w-1/2 h-full flex items-stretch">
