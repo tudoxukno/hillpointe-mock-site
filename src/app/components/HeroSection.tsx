@@ -1,7 +1,36 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useState, useRef } from "react";
+
+const HERO_TEXT = `$750M IN\nWORKFORCE\nHOUSING`;
+
+function getLines(text: string) {
+  return text.split("\n");
+}
 
 export default function HeroSection() {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let i = 0;
+    let animation: NodeJS.Timeout;
+    function type() {
+      i++;
+      setDisplayed(HERO_TEXT.slice(0, i));
+      if (i < HERO_TEXT.length) {
+        animation = setTimeout(type, 18);
+      } else {
+        setDone(true);
+      }
+    }
+    type();
+    return () => clearTimeout(animation);
+  }, []);
+
+  // Reserve space for the full text to prevent layout shift
+  const lines = getLines(HERO_TEXT);
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-start bg-gradient-to-b from-[#0F0903] to-[#1179EC] overflow-hidden">
       {/* Content: Text & Tabs */}
@@ -9,8 +38,9 @@ export default function HeroSection() {
         <div className="flex flex-row justify-between">
           {/* Left: Text */}
           <div className="flex flex-col justify-center max-w-[700px] pt-[40px]">
-            <h1 className="text-white text-[132px] font-medium leading-[1.05] mb-[12px] whitespace-pre-line">
-              {`$750M IN\nWORKFORCE\nHOUSING`}
+            <h1 className="text-white text-[132px] font-medium leading-[1.05] mb-[12px] whitespace-pre-line" style={{fontFamily: 'Inter, sans-serif'}}>
+              {displayed}
+              <span className="inline-block w-4 animate-pulse align-middle" style={{opacity: done ? 0 : 1}}>|</span>
             </h1>
             <p className="text-[#D5D5D5] text-[28px] font-normal mb-[20px] max-w-[600px]">
               Building modern housing for America&apos;s workforce across the Southeast.
@@ -33,7 +63,7 @@ export default function HeroSection() {
             </div>
             <div className="flex flex-col items-start">
               <span className="text-white text-[28px] font-medium mb-[8px]">Map</span>
-              <div className="h-[4px] rounded-full w-[220px] bg-[#f97316]" />
+              <div className="h-[4px] rounded-full w-[400px] bg-gradient-to-r from-[#f97316] to-[#fbbf24]" />
             </div>
           </div>
           {/* Down Arrow only */}
