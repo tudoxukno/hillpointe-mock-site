@@ -17,6 +17,40 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const NavLink = ({ item }: { item: string }) => {
+    // Map navigation items to their correct section IDs
+    const getSectionId = (navItem: string) => {
+      switch (navItem) {
+        case "About":
+          return "about";
+        case "Our Model":
+          return "properties"; // This maps to the properties section
+        case "Properties":
+          return "properties";
+        case "Investors":
+          return "investors";
+        case "Contact":
+          return "contact";
+        default:
+          return navItem.toLowerCase().replace(/ /g, "-");
+      }
+    };
+
+    return (
+      <a
+        href={`#${getSectionId(item)}`}
+        className="text-white text-[17px] font-medium cursor-pointer hover:text-orange-400 transition-colors px-2 py-1"
+        style={{ fontFamily: 'Inter, sans-serif' }}
+      >
+        {item}
+      </a>
+    );
+  };
+
   return (
     <>
       {/* Fixed Navigation */}
@@ -29,19 +63,18 @@ export default function Navigation() {
         <div className="grid grid-cols-3 px-[72px] py-4 w-full h-[56px] items-center">
           {/* Logo left */}
           <div className="flex items-center h-full">
-            <span className="text-white text-[34px] font-medium leading-none">Hillpointe</span>
+            <button
+              onClick={scrollToTop}
+              className="text-white text-[34px] font-medium leading-none cursor-pointer bg-transparent border-none p-0"
+              style={{ fontFamily: 'Inter, sans-serif', color: '#ffffff' }}
+            >
+              Hillpointe
+            </button>
           </div>
           {/* Nav centered */}
           <nav className="flex flex-row items-center justify-center gap-[40px] h-full whitespace-nowrap min-w-0">
             {navLinks.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-                className="text-white visited:text-white text-[17px] font-medium transition-colors no-underline hover:no-underline focus:no-underline flex items-center h-full whitespace-nowrap min-w-0"
-                style={{ fontFamily: 'Inter, sans-serif', textDecoration: 'none', color: '#fff' }}
-              >
-                {item}
-              </a>
+              <NavLink key={item} item={item} />
             ))}
           </nav>
           {/* CTA right */}
@@ -54,22 +87,21 @@ export default function Navigation() {
       </motion.header>
 
       {/* Initial Navigation (visible when not scrolled) */}
-      <header className="grid grid-cols-3 px-[72px] pt-[48px] w-full h-[56px] items-center" style={{ fontFamily: 'Inter, sans-serif' }}>
+      <header className="grid grid-cols-3 px-[72px] pt-[48px] w-full h-[56px] items-center relative z-40" style={{ fontFamily: 'Inter, sans-serif' }}>
         {/* Logo left */}
         <div className="flex items-center h-full">
-          <span className="text-white text-[34px] font-medium leading-none">Hillpointe</span>
+          <button
+            onClick={scrollToTop}
+            className="text-white text-[34px] font-medium leading-none cursor-pointer bg-transparent border-none p-0"
+            style={{ fontFamily: 'Inter, sans-serif', color: '#ffffff' }}
+          >
+            Hillpointe
+          </button>
         </div>
         {/* Nav centered */}
         <nav className="flex flex-row items-center justify-center gap-[40px] h-full whitespace-nowrap min-w-0">
           {navLinks.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-              className="text-white text-[17px] font-medium transition-colors no-underline flex items-center h-full whitespace-nowrap min-w-0"
-              style={{ fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
-            >
-              {item}
-            </a>
+            <NavLink key={item} item={item} />
           ))}
         </nav>
         {/* CTA right */}
